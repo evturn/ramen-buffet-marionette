@@ -36,25 +36,28 @@ TodoMVC.module('Layout', function(Layout, App, Backbone, $, _) {
 	Layout.Footer = Marionette.Layout.extend({
 		template: '#template-footer',
 		ui: {
-			count 		 : '#todo-count strong',
-      filters 			 : "#filters a"
+			count 	: '#todo-count strong',
+      filters	: "#filters a"
     },
     events: {
       "click #clear-completed" : "onClearClick"
     },
     initialize: function() {
-      this.bindTo(App.vent, "todoList:filter", this.updateFiltersSelection, this);
-      this.bindTo(this.collection, 'all', this.updateCount, this);
+      this.listenTo(App.vent, "todoList:filter", this.updateFiltersSelection);
+      this.listenTo(this.collection, 'all', this.updateCount);
     },
     onRender: function() {
       this.updateCount();
     },
     updateCount: function() {
-      var activeCount = this.collection.getActive().length,
+      var count = this.collection.getActive().length,
       completedCount = this.collection.getCompleted().length;
-      this.ui.todoCount.html(activeCount);
-      this.ui.todoCountLabel.html(activeCount === 1 ? 'item' : 'items');
-      this.ui.clearCount.html(completedCount === 0 ? '' : '(' + completedCount + ')');
+      this.ui.count.html(count);
+      if (count === 0) {
+      	this.$el.parent().hide();
+      } else {
+      	this.$el.parent().show();
+      }
     },
 		updateFilterSelection : function(filter) {
 			this.ui.filters
