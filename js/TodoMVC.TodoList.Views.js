@@ -66,7 +66,18 @@ TodoMVC.module('TodoList.Views', function(Views, App, Backbone, Marionette, $, _
     template: '#template-todoListCompositeView',
     childView: Views.ItemView,
     childViewContainer: '#todo-list',
-
+    ui: {
+      toggle: '#toggle-all'
+    },
+    events: {
+      'click #toggle-all': 'onToggleAllClick'
+    },
+    initialize: function() {
+      this.bindTo(this.collection, 'all', this.update, this);
+    },
+    onRender: function() {
+      this.update();
+    },
   });
 
   App.vent.on('todoList:filter',function(filter) {
