@@ -7,17 +7,15 @@ TodoMVC.module('Layout', function(Layout, App, Backbone, $, _) {
 		},
 		events: {
 			'keypress #new-todo' : 'onInputKeypress',
-			'blur #new-todo'		 : 'onTodoBlur'
-		},
-		onTodoBlur: function() {
-			var todoText = this.ui.input.val().trim();
-			this.createTodo(todoText);
 		},
 	  onInputKeypress: function(e) {
 	    var ENTER_KEY = 13;
 	    var todoText = this.ui.input.val().trim();
 	    if ( e.which === ENTER_KEY && todoText ) {
-	      this.createTodo(todoText);
+	      this.collection.createTodo({
+	      	title: todoText
+	      });
+	      this.ui.input.val('');
 	    }
 	  },
 	  completeAdd: function() {
@@ -38,9 +36,7 @@ TodoMVC.module('Layout', function(Layout, App, Backbone, $, _) {
 	Layout.Footer = Marionette.Layout.extend({
 		template: '#template-footer',
 		ui: {
-			todoCount 		 : '#todo-count .count',
-			todoCountLabel : '#todo-count .label',
-			clearCount 		 : '#clear-completed .count',
+			count 		 : '#todo-count strong',
       filters 			 : "#filters a"
     },
     events: {
