@@ -1,9 +1,7 @@
 TodoMVC.module('Todos', function(Todos, App, Backbone, Marionette, $, _) {
 
-  var localStorageKey = 'ramen-buffet-marionette';
-
   Todos.Todo = Backbone.Model.extend({
-    localStorage: new Backbone.LocalStorage(localStorageKey),
+    localStorage: new Backbone.LocalStorage('ramen-buffet-marionette'),
     defaults: {
       title: '',
       completed: false,
@@ -24,7 +22,7 @@ TodoMVC.module('Todos', function(Todos, App, Backbone, Marionette, $, _) {
 
   Todos.TodoList = Backbone.Collection.extend({
     model: Todos.Todo,
-    localStorage: new Backbone.LocalStorage(localStorageKey),
+    localStorage: new Backbone.LocalStorage('ramen-buffet-marionette'),
     getCompleted: function() {
       return this.filter(this._isCompleted);
     },

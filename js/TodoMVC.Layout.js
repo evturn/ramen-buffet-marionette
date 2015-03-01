@@ -1,4 +1,4 @@
-TodoMVC.module('Layout', function(Layout, App, Backbone, $, _) {
+TodoMVC.module('Layout', function(Layout, App, Backbone, Marionette, $, _) {
 	
 	Layout.Header = Backbone.Marionette.ItemView.extend({
 		template: '#template-header',
@@ -12,24 +12,12 @@ TodoMVC.module('Layout', function(Layout, App, Backbone, $, _) {
 	    var ENTER_KEY = 13;
 	    var todoText = this.ui.input.val().trim();
 	    if ( e.which === ENTER_KEY && todoText ) {
-	      this.collection.createTodo({
+	      this.collection.create({
 	      	title: todoText
 	      });
 	      this.ui.input.val('');
 	    }
-	  },
-	  completeAdd: function() {
-	    this.ui.input.val('');
-	  },
-	  createTodo: function(todoText) {
-		  if (todoText.trim() === ""){ return; }
-
-		  this.collection.create({
-		    title: todoText
-		  });
-
-		  this.completeAdd();
-		}
+	  }
 	});
 
 

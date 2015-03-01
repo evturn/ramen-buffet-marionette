@@ -34,17 +34,6 @@ TodoMVC.module('TodoList.Views', function(Views, App, Backbone, Marionette, $, _
       this.$el.addClass('editing');
       this.ui.edit.focus();
     },
-    updateTodo : function() {
-      var todoText = this.ui.edit.val();
-      if (todoText === '') {
-        return this.destroy();
-      }
-      this.setTodoText(todoText);
-      this.completeEdit();
-    },
-    onEditBlur: function(e){
-      this.updateTodo();
-    },
     onEditKeypress: function(e) {
       var ENTER_KEY = 13;
       var todoText = this.ui.edit.val().trim();
@@ -52,13 +41,6 @@ TodoMVC.module('TodoList.Views', function(Views, App, Backbone, Marionette, $, _
         this.model.set('title', todoText).save();
         this.$el.removeClass('editing');
       }
-    },
-    setTodoText: function(todoText){
-      if (todoText.trim() === ""){ return; }
-      this.model.set('title', todoText).save();
-    },
-    completeEdit: function(){
-      this.$el.removeClass('editing');
     },
   });
 
@@ -95,7 +77,6 @@ TodoMVC.module('TodoList.Views', function(Views, App, Backbone, Marionette, $, _
       this.collection.each(function(todo) {
         todo.save({'completed': isChecked});
       });
-
     }
   });
 
