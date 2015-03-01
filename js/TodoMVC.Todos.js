@@ -22,5 +22,10 @@ TodoMVC.module('Todos', function(Todos, App, Backbone, Marionette, $, _) {
     }
   });
 
+  Todos.TodoList = Backbone.Collection.extend({
+    model: Todos.Todo,
+    localStorage: new Backbone.LocalStorage(localStorageKey),
+
+  });
 
 });
