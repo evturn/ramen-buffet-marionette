@@ -4,7 +4,11 @@ TodoMVC.module('Layout', function(Layout, App, Backbone, $, _) {
 		input: '#new-todo'
 	},
 	events: {
-		'keypress #new-todo': 'onInputKeypress',
-		'blur #new-todo': 'onTodoBlur'
+		'keypress #new-todo' : 'onInputKeypress',
+		'blur #new-todo'		 : 'onTodoBlur'
+	},
+	onTodoBlur: function() {
+		var todoText = this.ui.input.val().trim();
+		this.createTodo(todoText);
 	},
 });
