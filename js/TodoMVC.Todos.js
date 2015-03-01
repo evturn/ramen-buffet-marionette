@@ -14,7 +14,12 @@ TodoMVC.module('Todos', function(Todos, App, Backbone, Marionette, $, _) {
         this.set('created', Date.now());
       }
     },
-
+    toggle: function() {
+      return this.set('completed', !this.isCompleted());
+    },
+    isCompleted: function() { 
+      return this.get('completed'); 
+    }
   });
 
 
