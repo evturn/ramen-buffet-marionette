@@ -14,7 +14,7 @@ TodoMVC.module('TodoList.Views', function(Views, App, Backbone, Marionette, $, _
       'click .toggle' : 'toggle'
     }, 
     initialize: function() {
-      this.bindTo(this.model, 'change', this.render, this);
+      this.listenTo(this.model, 'change', this.render);
     },
     onRender: function() {
       this.$el.removeClass( 'active completed' );
@@ -64,8 +64,8 @@ TodoMVC.module('TodoList.Views', function(Views, App, Backbone, Marionette, $, _
 
   Views.ListView = Backbone.Marionette.CompositeView.extend({
     template: '#template-todoListCompositeView',
-    childView: Views.ItemView,
-    childViewContainer: '#todo-list',
+    itemView: Views.ItemView,
+    itemViewContainer: '#todo-list',
     ui: {
       toggle: '#toggle-all'
     },
@@ -73,7 +73,7 @@ TodoMVC.module('TodoList.Views', function(Views, App, Backbone, Marionette, $, _
       'click #toggle-all': 'onToggleAllClick'
     },
     initialize: function() {
-      this.bindTo(this.collection, 'all', this.update, this);
+      this.listenTo(this.collection, 'all', this.update)
     },
     onRender: function() {
       this.update();

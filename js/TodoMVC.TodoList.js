@@ -15,8 +15,7 @@ TodoMVC.module('TodoList', function(TodoList, App, Backbone, Marionette, $, _){
       this.showHeader(this.todoList);
       this.showFooter(this.todoList);
       this.showTodoList(this.todoList);
-		  App.bindTo(this.todoList, 'reset add remove', this.toggleFooter, this);
-	      this.todoList.fetch();
+	    this.todoList.fetch();
     },
     showHeader: function(todoList) {
       var header = new App.Layout.Header({
@@ -34,9 +33,6 @@ TodoMVC.module('TodoList', function(TodoList, App, Backbone, Marionette, $, _){
       App.main.show(new TodoList.Views.ListView({
         collection: todoList
       }));
-    },
-    toggleFooter: function() {
-      App.footer.$el.toggle(this.todoList.length);
     },
     filterItems: function(filter) {
       App.vent.trigger('todoList:filter', filter.trim() || '');
