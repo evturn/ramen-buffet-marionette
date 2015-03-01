@@ -6,8 +6,14 @@ TodoMVC.module('TodoList.Views', function(Views, App, Backbone, Marionette, $, _
     ui: {
       edit: '.edit'
     },
-
-  });
+    events: {
+      'click .destroy': 'destroy',
+      'dblclick label': 'onEditClick',
+      'keypress .edit': 'onEditKeypress',
+      'blur .edit'    : 'onEditBlur',
+      'click .toggle' : 'toggle'
+    },
+});
 
   App.vent.on('todoList:filter',function(filter) {
     filter = filter || 'all';
