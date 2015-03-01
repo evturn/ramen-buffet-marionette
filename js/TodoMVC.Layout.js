@@ -11,4 +11,11 @@ TodoMVC.module('Layout', function(Layout, App, Backbone, $, _) {
 		var todoText = this.ui.input.val().trim();
 		this.createTodo(todoText);
 	},
+  onInputKeypress: function(e) {
+    var ENTER_KEY = 13;
+    var todoText = this.ui.input.val().trim();
+    if ( e.which === ENTER_KEY && todoText ) {
+      this.createTodo(todoText);
+    }
+  },
 });
