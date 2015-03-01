@@ -18,4 +18,16 @@ TodoMVC.module('Layout', function(Layout, App, Backbone, $, _) {
       this.createTodo(todoText);
     }
   },
+  completeAdd: function() {
+    this.ui.input.val('');
+  },
+  createTodo: function(todoText) {
+	  if (todoText.trim() === ""){ return; }
+
+	  this.collection.create({
+	    title: todoText
+	  });
+
+	  this.completeAdd();
+	}
 });
