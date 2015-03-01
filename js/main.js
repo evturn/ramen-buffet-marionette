@@ -1,3 +1,0 @@
-$(function() {
-  TodoMVC.start();
-});

@@ -38,3 +38,7 @@ TodoMVC.module('Todos', function(Todos, App, Backbone, Marionette, $, _) {
   });
 
 });
+
+$(function() {
+  TodoMVC.start();
+});

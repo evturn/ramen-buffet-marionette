@@ -1,6 +1,6 @@
 TodoMVC.module('Layout', function(Layout, App, Backbone, Marionette, $, _) {
 	
-	Layout.Header = Backbone.Marionette.ItemView.extend({
+	Layout.Header = Marionette.ItemView.extend({
 		template: '#template-header',
 		ui: {
 			input: '#new-todo'

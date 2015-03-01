@@ -43,7 +43,7 @@ TodoMVC.module('TodoList.Views', function(Views, App, Backbone, Marionette, $, _
     },
   });
 
-  Views.ListView = Backbone.Marionette.CompositeView.extend({
+  Views.ListView = Marionette.CompositeView.extend({
     template: '#template-todoListCompositeView',
     itemView: Views.ItemView,
     itemViewContainer: '#todo-list',
