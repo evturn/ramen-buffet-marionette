@@ -4,6 +4,12 @@
 	<meta charset="UTF-8">
 	<title>Ramen Buffet</title>
 	<link rel="stylesheet" href="assets/base.css">
+
+
+
+
+
+
 </head>
 <body>
 	<section id="todoapp">
@@ -19,6 +25,42 @@
 			<p>Based Upon <a href="http://addyosmani.github.io/backbone-fundamentals/#marionette-todo-app">This</a>.</p>
 		</footer>
 
+		<script type="text/html" id="template-footer">
+		<span id="todo-count"><strong class="count"></strong> <span class="label"></span> left</span>
+		<ul id="filters">
+			<li>
+				<a href="#">All</a>
+			</li>
+			<li>
+				<a href="#active">Active</a>
+			</li>
+			<li>
+				<a href="#completed">Completed</a>
+			</li>
+		</ul>
+		<button id="clear-completed">Clear completed <span class="count"></span></button>
+	</script>
+
+	<script type="text/html" id="template-header">
+		<h1>todos</h1>
+		<input id="new-todo" placeholder="What needs to be done?" autofocus>
+	</script>
+
+	<script type="text/html" id="template-todoItemView">
+		<div class="view">
+			<input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
+			<label><%= title %></label>
+			<button class="destroy"></button>
+		</div>
+		<input class="edit" value="<%= title %>">
+	</script>
+
+	<script type="text/html" id="template-todoListCompositeView">
+		<input id="toggle-all" type="checkbox">
+		<label for="toggle-all">Mark all as complete</label>
+		<ul id="todo-list"></ul>
+	</script>
+
 
 	<script src="js/lib/jquery.js"></script>
   <script src="js/lib/underscore.js"></script>
@@ -31,5 +73,6 @@
 	<script src="js/TodoMVC.Layout.js"></script>
 	<script src="js/TodoMVC.TodoList.Views.js"></script>
 	<script src="js/TodoMVC.TodoList.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>

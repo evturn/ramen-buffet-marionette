@@ -47,8 +47,8 @@ TodoMVC.module('Layout', function(Layout, App, Backbone, $, _) {
       "click #clear-completed" : "onClearClick"
     },
     initialize: function() {
-      this.bindTo( App.vent, "todoList: filter", this.updateFilterSelection, this );
-      this.bindTo( this.collection, 'all', this.updateCount, this );
+      this.bindTo(App.vent, "todoList:filter", this.updateFiltersSelection, this);
+      this.bindTo(this.collection, 'all', this.updateCount, this);
     },
     onRender: function() {
       this.updateCount();
@@ -60,12 +60,12 @@ TodoMVC.module('Layout', function(Layout, App, Backbone, $, _) {
       this.ui.todoCountLabel.html(activeCount === 1 ? 'item' : 'items');
       this.ui.clearCount.html(completedCount === 0 ? '' : '(' + completedCount + ')');
     },
-    updateFilterSelection: function( filter ) {
-      this.ui.filters
-        .removeClass('selected')
-        .filter( '[href="#' + filter + '"]')
-        .addClass( 'selected' );
-    },
+		updateFilterSelection : function(filter) {
+			this.ui.filters
+				.removeClass('selected')
+				.filter('[href="#' + filter + '"]')
+				.addClass('selected');
+		},
     onClearClick: function() {
       var completed = this.collection.getCompleted();
       completed.forEach(function destroy(todo) {
