@@ -10,7 +10,6 @@ TodoMVC.module('TodoList.Views', function(Views, App, Backbone, Marionette, $, _
       'click .destroy': 'destroy',
       'dblclick label': 'onEditClick',
       'keypress .edit': 'onEditKeypress',
-      'blur .edit'    : 'onEditBlur',
       'click .toggle' : 'toggle'
     }, 
     initialize: function() {
