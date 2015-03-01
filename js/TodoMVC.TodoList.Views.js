@@ -62,7 +62,12 @@ TodoMVC.module('TodoList.Views', function(Views, App, Backbone, Marionette, $, _
     },
   });
 
+  Views.ListView = Backbone.Marionette.CompositeView.extend({
+    template: '#template-todoListCompositeView',
+    childView: Views.ItemView,
+    childViewContainer: '#todo-list',
 
+  });
 
   App.vent.on('todoList:filter',function(filter) {
     filter = filter || 'all';
