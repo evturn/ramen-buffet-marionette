@@ -39,7 +39,7 @@ TodoMVC.module('Layout', function(Layout, App, Backbone, $, _) {
 		template: '#template-footer',
 		ui: {
 			todoCount 		 : '#todo-count .count',
-			todoCountLabel : '#todo-count .label'
+			todoCountLabel : '#todo-count .label',
 			clearCount 		 : '#clear-completed .count',
       filters 			 : "#filters a"
     },
